@@ -9,10 +9,38 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
 
-    <title>Chart</title>
+    <title>CVision</title>
+    <style>
+        table,
+        thead,
+        tr,
+        tbody,
+        th,
+        td {
+        text-align: center;
+        }
+    </style>
 </head>
 
 <body>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Toplam Vaka</th>
+                <th scope="col">Bugünkü Vakalar</th>
+                <th scope="col">Ölümler</th>
+                <th scope="col">Bugünkü Ölümler</th>
+                <th scope="col">İyileşenler</th>
+                <th scope="col">Aktif Hasta</th>
+                <th scope="col">Kritik Vaka</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="today-info">
+            </tr>
+        </tbody>
+    </table>
     <div>
         <h1 align="center" class="totalCases">Türkiye Toplam Vaka Sayısı</h1>
     </div>

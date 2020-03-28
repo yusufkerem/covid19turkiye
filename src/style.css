@@ -30,7 +30,8 @@ main{
 
 
 body{
-    background-color: #424949 ;
+    /* background-color: #424949 ; */
+    background-color: lightgrey;
 }
 
 .totalCases{   

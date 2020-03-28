@@ -1,5 +1,6 @@
 class UI{
     constructor(){
+        //
     }
 
     load_chart(element, type = "line", dates = null, datasets = null) {
