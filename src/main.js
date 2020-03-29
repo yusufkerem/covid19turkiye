@@ -79,6 +79,7 @@ daily_cases_button.addEventListener("click", function () {
 });
 
 total_deaths_button.addEventListener("click", function () {
+    remove_home();
     historical_data.get()
         .then(res => {
             historical_deaths = res.timeline.deaths;
