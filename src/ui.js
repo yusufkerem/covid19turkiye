@@ -3,7 +3,7 @@ class UI{
         //
     }
 
-    load_chart(element, type = "line", dates = null, datasets = null) {
+    create_chart(element, type = "line", dates = null, datasets = null) {
         let CasesChart = new Chart(element, {
             type: type,
             data: {

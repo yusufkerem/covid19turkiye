@@ -72,63 +72,11 @@
         </div>
     </nav>
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Toplam Vaka</th>
-                <th scope="col">Bugünkü Vakalar</th>
-                <th scope="col">Ölümler</th>
-                <th scope="col">Bugünkü Ölümler</th>
-                <th scope="col">İyileşenler</th>
-                <th scope="col">Aktif Hasta</th>
-                <th scope="col">Kritik Vaka</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="today-info">
-                <th scope="row"></th>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-        </tbody>
-    </table>
-    <div id="charts-division">
-    <div>
-        <h1 align="center" class="totalCases">Türkiye Toplam Vaka Sayısı</h1>
+    <div id="home-table">
     </div>
-    <div class="container">
+
+    <div class="container" id="home-chart-div">
         <canvas id="myChart"></canvas>
-    </div>
-
-    <div>
-        <h1 align="center" class="newCases">Türkiye Günlük Yeni Vaka Sayısı</h1>
-    </div>
-
-    <div class="container">
-        <canvas id="myChart3"></canvas>
-    </div>
-
-    <div>
-        <h1 align="center" class="totalDeaths">Türkiye Toplam Ölüm Sayısı</h1>
-    </div>
-
-    <div class="container">
-        <canvas id="myChart4"></canvas>
-    </div>
-
-    <div>
-        <h1 align="center" class="totalRecovered">Türkiye Toplam İyileşen Sayısı</h1>
-    </div>
-
-    <div class="container">
-        <canvas id="myChart2"></canvas>
-    </div>
     </div>
     <script src="ui.js"></script>
     <script src="data.js"></script>

@@ -3,17 +3,15 @@
 // https://www.worldometers.info/coronavirus/country/turkey/
 
 let ui = new UI();
-const total_cases_chart = document.getElementById("myChart").getContext("2d");
-const daily_cases_chart = document.getElementById("myChart3").getContext("2d");
-const total_deaths_chart = document.getElementById("myChart4").getContext("2d");
-const total_recovered_chart = document.getElementById("myChart2").getContext("2d");
+let home_chart = document.getElementById("myChart").getContext("2d");
+const home_table = document.getElementById("home-table");
+const home_chart_div = document.getElementById("home-chart-div");
 
 const home_button = document.getElementById("home-button");
 const total_cases_button = document.getElementById("total-cases-button");
 const daily_cases_button = document.getElementById("daily-cases-button");
 const total_deaths_button = document.getElementById("total-deaths-button");
 const total_recovered_button = document.getElementById("total-recovered-button");
-const charts_division = document.getElementById("charts-division");
 
 const historical_data = new Data("https://corona.lmao.ninja/v2/historical/turkey");
 let historical_cases;
@@ -22,23 +20,43 @@ let historical_deaths;
 const historical_recovered_data = new Data("https://api.covid19api.com/live/country/turkey/status/recovered");
 
 const data = new Data("https://corona.lmao.ninja/countries/792");
-const today_info_row = document.getElementById("today-info");
 
-document.addEventListener("DOMContentLoaded", load_page);
+document.addEventListener("DOMContentLoaded", load_home);
 home_button.addEventListener("click", load_home)
 
-function load_home(){
-    charts_division.style.visibility = "hidden";
-}
-
-function load_page() {
+total_cases_button.addEventListener("click", function () {
+    remove_home();
     historical_data.get()
         .then(res => {
             historical_cases = res.timeline.cases;
             historical_deaths = res.timeline.deaths;
             let dates_array = [];
             let cases_array = [];
-            let deaths_array = [];
+
+            for (date in historical_cases) {
+                const shredded = date.split("/");
+                const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
+                dates_array.push(rebuilt);
+                cases_array.push(historical_cases[date]);
+            }
+            ui.create_chart(home_chart, "line", dates_array, {
+                label: "Toplam vaka sayısı",
+                data: cases_array,
+                borderColor: "rgb(229,57,53)",
+                hoverBorderColor: "rgb(235,107,104)",
+                borderWidth: 5,
+                hoverBorderWidth: 20
+            })
+        })
+});
+
+daily_cases_button.addEventListener("click", function () {
+    remove_home();
+    historical_data.get()
+        .then(res => {
+            historical_cases = res.timeline.cases;
+            historical_deaths = res.timeline.deaths;
+            let dates_array = [];
             let daily_cases_array = [];
 
             let temp = 0;
@@ -47,28 +65,9 @@ function load_page() {
                 const shredded = date.split("/");
                 const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
                 dates_array.push(rebuilt);
-                cases_array.push(historical_cases[date]);
-                deaths_array.push(historical_deaths[date]); // same dates with cases
                 temp = historical_cases[date];
             }
-
-            ui.load_chart(total_cases_chart, "line", dates_array, {
-                label: "Toplam vaka sayısı",
-                data: cases_array,
-                borderColor: "rgb(229,57,53)",
-                hoverBorderColor: "rgb(235,107,104)",
-                borderWidth: 5,
-                hoverBorderWidth: 20
-            })
-            ui.load_chart(total_deaths_chart, "line", dates_array, {
-                label: "Toplam ölüm sayısı",
-                data: deaths_array,
-                borderColor: "darkred",
-                hoverBorderColor: "red",
-                borderWidth: 5,
-                hoverBorderWidth: 20
-            })
-            ui.load_chart(daily_cases_chart, "bar", dates_array, {
+            ui.create_chart(home_chart, "bar", dates_array, {
                 label: "Günlük yeni vaka sayısı",
                 data: daily_cases_array,
                 borderColor: "rgb(175,182,180)",
@@ -77,8 +76,34 @@ function load_page() {
                 hoverBorderWidth: 25
             })
         })
-        .catch(err => console.error(err));
+});
 
+total_deaths_button.addEventListener("click", function () {
+    historical_data.get()
+        .then(res => {
+            historical_deaths = res.timeline.deaths;
+            let dates_array = [];
+            let deaths_array = [];
+
+            for (date in historical_deaths) {
+                const shredded = date.split("/");
+                const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
+                dates_array.push(rebuilt);
+                deaths_array.push(historical_deaths[date]); // same dates with cases
+            }
+            ui.create_chart(home_chart, "line", dates_array, {
+                label: "Toplam ölüm sayısı",
+                data: deaths_array,
+                borderColor: "darkred",
+                hoverBorderColor: "red",
+                borderWidth: 5,
+                hoverBorderWidth: 20
+            })
+        })
+});
+
+total_recovered_button.addEventListener("click", function(){
+    remove_home();
     historical_recovered_data.get()
         .then(res => {
             let dates_array = []
@@ -93,7 +118,7 @@ function load_page() {
                 }
                 temp = shredded[2];
             })
-            ui.load_chart(total_recovered_chart, "line", dates_array, {
+            ui.create_chart(home_chart, "line", dates_array, {
                 label: "Toplam iyileşen sayısı",
                 data: recovered_array,
                 borderColor: "rgb(19,240,161)",
@@ -103,18 +128,48 @@ function load_page() {
             })
         })
         .catch(err => console.error(err));
+})
 
+function remove_home() {
+    home_table.innerHTML = "";
+    home_chart_div.innerHTML = "";
+    const canvas = document.createElement("canvas");
+    canvas.id = "myChart";
+    home_chart_div.appendChild(canvas);
+    home_chart = document.getElementById("myChart").getContext("2d");
+}
+
+function load_home() {
+    remove_home();
     data.get()
         .then(res => {
-            today_info_row.innerHTML = `
-                        <th scope="row"></th>
-                        <td>${res.cases}</td>
-                        <td>${res.todayCases}</td>
-                        <td>${res.deaths}</td>
-                        <td>${res.todayDeaths}</td>
-                        <td>${res.recovered}</td>
-                        <td>${res.active}</td>
-                        <td>${res.critical}</td>
+            home_table.innerHTML = `
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Toplam Vaka</th>
+                            <th scope="col">Bugünkü Vakalar</th>
+                            <th scope="col">Ölümler</th>
+                            <th scope="col">Bugünkü Ölümler</th>
+                            <th scope="col">İyileşenler</th>
+                            <th scope="col">Aktif Hasta</th>
+                            <th scope="col">Kritik Vaka</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="today-info">
+                            <th scope="row"></th>
+                            <td>${res.cases}</td>
+                            <td>${res.todayCases}</td>
+                            <td>${res.deaths}</td>
+                            <td>${res.todayDeaths}</td>
+                            <td>${res.recovered}</td>
+                            <td>${res.active}</td>
+                            <td>${res.critical}</td>
+                        </tr>
+                    </tbody>
+                </table>
         `
         })
         .catch(err => console.error(err));
