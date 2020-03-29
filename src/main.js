@@ -3,10 +3,17 @@
 // https://www.worldometers.info/coronavirus/country/turkey/
 
 let ui = new UI();
-let total_cases_chart = document.getElementById("myChart").getContext("2d");
-let daily_cases_chart = document.getElementById("myChart3").getContext("2d");
-let total_deaths_chart = document.getElementById("myChart4").getContext("2d");
-let total_recovered_chart = document.getElementById("myChart2").getContext("2d");
+const total_cases_chart = document.getElementById("myChart").getContext("2d");
+const daily_cases_chart = document.getElementById("myChart3").getContext("2d");
+const total_deaths_chart = document.getElementById("myChart4").getContext("2d");
+const total_recovered_chart = document.getElementById("myChart2").getContext("2d");
+
+const home_button = document.getElementById("home-button");
+const total_cases_button = document.getElementById("total-cases-button");
+const daily_cases_button = document.getElementById("daily-cases-button");
+const total_deaths_button = document.getElementById("total-deaths-button");
+const total_recovered_button = document.getElementById("total-recovered-button");
+const charts_division = document.getElementById("charts-division");
 
 const historical_data = new Data("https://corona.lmao.ninja/v2/historical/turkey");
 let historical_cases;
@@ -15,16 +22,14 @@ let historical_deaths;
 const historical_recovered_data = new Data("https://api.covid19api.com/live/country/turkey/status/recovered");
 
 const data = new Data("https://corona.lmao.ninja/countries/792");
-let cases;
-let today_cases;
-let deaths;
-let today_deaths;
-let recovered;
-let active;
-let critical;
 const today_info_row = document.getElementById("today-info");
 
 document.addEventListener("DOMContentLoaded", load_page);
+home_button.addEventListener("click", load_home)
+
+function load_home(){
+    charts_division.style.visibility = "hidden";
+}
 
 function load_page() {
     historical_data.get()
@@ -39,11 +44,8 @@ function load_page() {
             let temp = 0;
             for (date in historical_cases) {
                 daily_cases_array.push(Math.abs(historical_cases[date] - temp));
-                console.log(date);
                 const shredded = date.split("/");
-                console.log(shredded);
                 const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
-                console.log(rebuilt);
                 dates_array.push(rebuilt);
                 cases_array.push(historical_cases[date]);
                 deaths_array.push(historical_deaths[date]); // same dates with cases
@@ -104,14 +106,6 @@ function load_page() {
 
     data.get()
         .then(res => {
-            console.log(res);
-            cases = res.cases
-            today_cases = res.todayCases;
-            deaths = res.deaths;
-            today_deaths = res.todayDeaths;
-            recovered = res.recovered;
-            active = res.active;
-            critical = res.critical;
             today_info_row.innerHTML = `
                         <th scope="row"></th>
                         <td>${res.cases}</td>
@@ -122,8 +116,6 @@ function load_page() {
                         <td>${res.active}</td>
                         <td>${res.critical}</td>
         `
-            console.log(`cases: ${cases}, today_cases: ${today_cases}, deaths: ${deaths}, today_deaths: ${today_deaths}, recovered: ${recovered}, active: ${active}, critical: ${critical}`);
         })
         .catch(err => console.error(err));
-
 }
