@@ -227,7 +227,7 @@ function load_page() {
                 </div>
             `;
             document.getElementById("footer").innerHTML = `
-            <p class="blockquote-footer text-center text-muted">Developed by Efe Furkan KARAKAYA and Yusuf Kerem ÇALIKOĞLU | MIT LICENCE | 2020</p>
+            <p class="blockquote-footer text-center text-muted">Developed by Efe Furkan KARAKAYA and Yusuf Kerem ÇALIKOĞLU | © 2020</p>
             `;
             const home_cases_button = document.getElementById("home-cases-button");
             const home_deaths_button = document.getElementById("home-deaths-button");
