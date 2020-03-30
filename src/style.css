@@ -46,7 +46,8 @@ main{
     height: 100%;
 }
 .nav-item{
-    width: 100%;
+    
+    width: 110%;
 }
 
 .nav-item:last-child {
@@ -61,6 +62,8 @@ main{
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
     transition: 600ms;
+    
+    
 
 }
 .nav-link:hover{
@@ -73,6 +76,7 @@ main{
     margin-left: 1rem;
 }
 .nav-link svg {
+    width: 2rem;
     min-width: 2rem;
     margin: 0 1.5rem;
 }

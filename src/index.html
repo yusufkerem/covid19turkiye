@@ -27,7 +27,7 @@
     <nav class="navbar justify-content-center">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" id="home-button">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home"
                         class="svg-inline--fa fa-home fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 576 512">
@@ -39,7 +39,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" id="total-cases-button">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="lungs-virus"
                         class="svg-inline--fa fa-lungs-virus fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512">
@@ -51,7 +51,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" id="total-deaths-button">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-times"
                         class="svg-inline--fa fa-user-times fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512">
@@ -63,7 +63,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" id="total-recovered-button">
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="lungs"
                         class="svg-inline--fa fa-lungs fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 640 512">
@@ -75,7 +75,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" id="daily-cases-button">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
                         class="svg-inline--fa fa-github fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 496 512">
@@ -92,9 +92,10 @@
     <main>
         <div id="home-table">
         </div>
-        <div class="container" id="home-chart-div">
+        <div class="container" id="home-chart-div" style="margin-left: 10rem; margin-top: 5rem; width: 1000px;">
             <canvas id="myChart"></canvas>
         </div>
+        <div id="optional" align="center"></div>
     </main>
 
     <footer id="footer">
