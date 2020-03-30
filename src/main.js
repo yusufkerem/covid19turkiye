@@ -147,60 +147,60 @@ function load_page() {
     data.get()
         .then(res => {
             home_table.innerHTML = `
-                <h2>COVID-19 Türkiye İstatistikleri</h1>
+                <h2 style="margin-left: 24rem;"><b>COVID-19 Türkiye İstatistikleri</b></h1>
                 <br>
-                <div class="row">
-                    <div class="col-sm-4">
+                <div class="row" style="margin-left: 13rem;">
+                    <div class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: rgb(229,57,53);"><b>Vakalar</b></h5>
-                                <p class="card-text text-muted display-1">${res.cases}</p>
+                                <p class="card-text text-muted display-4">${res.cases}</p>
                                 <a href="#" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: rgb(229,57,53);"><b>Ölümler</b></h5>
-                                <p class="card-text text-muted display-1">${res.deaths}</p>
+                                <p class="card-text text-muted display-4">${res.deaths}</p>
                                 <a href="#" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: rgb(229,57,53);"><b>İyileşenler</b></h5>
-                                <p class="card-text text-muted display-1">${res.recovered}</p>
+                                <p class="card-text text-muted display-4">${res.recovered}</p>
                                 <a href="#" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row" style="margin-top: 2rem;">
-                    <div class="col-sm-4">
+                <div class="row" style="margin-top: 2rem; margin-left: 13rem;">
+                    <div class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: rgb(229,57,53);"><b>Bugünkü Vakalar</b></h5>
-                                <p class="card-text text-muted display-1">${res.todayCases}</p>
+                                <p class="card-text text-muted display-4">${res.todayCases}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: rgb(229,57,53);"><b>Bugünkü Ölümler</b></h5>
-                                <p class="card-text text-muted display-1">${res.todayDeaths}</p>
+                                <p class="card-text text-muted display-4">${res.todayDeaths}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: rgb(229,57,53);"><b>Kritik</b></h5>
-                                <p class="card-text text-muted display-1">${res.critical}</p>
+                                <p class="card-text text-muted display-4">${res.critical}</p>
                             </div>
                         </div>
                     </div>

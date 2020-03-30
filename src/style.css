@@ -1,34 +1,11 @@
-main{
-    font-family: 'Exo 2', sans-serif;
-}
-
-@keyframes txt-animation{
-    0%{background-position: left;}
-    100%{background-position: right;}
-}
-
 :root{
-    --gradient: linear-gradient(
-        45deg,
-        #ff001e,
-        #751a0f
-    );
-
-    --gradientb: linear-gradient(
-        45deg,
-        #bdc3c7,
-        #2c3e50
-    );
-
-    --gradientc: linear-gradient(
-        45deg,
-        rgb(36, 255, 178),
-        rgb(10, 126, 85)
-    );
+    font-size: 16px;
+    font-family: 'Baloo Chettan 2', cursive;
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #151518;
+    --bg-secondary: #23232e;
 }
-
-
-
 body{
     color: black;
     background-color: #1e1e24;
@@ -36,7 +13,7 @@ body{
     padding: 0;
 }
 body::-webkit-scrollbar{
-    width: 1rem;
+    width: 0.75rem;
 }
 body::-webkit-scrollbar-track{
     background: #151518;
@@ -46,16 +23,16 @@ body::-webkit-scrollbar-thumb{
     background: #23232e;
 
 }
+
+ 
 main{
-    margin-left: 10rem;
+    margin-left: 5rem;
     padding: 1rem;
 }
 
-.navbar {
-    width: 10rem;
-    height: 100vh;
+.navbar{
     position: fixed;
-    background-color: #151518;
+    background-color: var(--bg-primary);
     transition: width 200ms ease;
 }
 
@@ -67,119 +44,103 @@ main{
     flex-direction: column;
     align-items: center;
     height: 100%;
-
 }
-
 .nav-item{
     width: 100%;
-
 }
 
-.nav-item:last-child{
-    margin-top: auto !important;
-
+.nav-item:last-child {
+    margin-top: auto;
 }
 
 .nav-link{
-    display:flex;
+    display: flex;
     align-items: center;
-    height: 7rem;
-    color: #b6b6b6;
+    height: 5rem;
+    color: var(--text-primary);
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
     transition: 600ms;
 
 }
-
 .nav-link:hover{
     filter: grayscale(0%) opacity(1);
-    background:#101013 ;
-    color: #ececec;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
 }
-
-.link-text {
+.link-text{
     display: none;
     margin-left: 1rem;
 }
-
-.nav-link svg{
-    min-width: 5rem;
+.nav-link svg {
+    min-width: 2rem;
     margin: 0 1.5rem;
-
 }
-
 .navbar:hover{
-    width: 15.5rem;
+    width: 16rem;
 }
-.navbar:hover .link-text {
+.navbar:hover .link-text{
     display: block;
 }
-
-
-
+#icon{
+    fill: #d83cff;
+}
 .fa-primary{
-    color: #F21616;
+    color: #ff7eee;
 }
+
 .fa-secondary{
-    color: #F21616;
+    color: #df49a6;
 }
+
 .fa-primary,
 .fa-secondary{
-    transition: 400ms;
+    transition: var(--transition-speed);
 }
 
+@media only screen and (max-width: 600px){
+    .navbar{
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
 
+    }
 
+    .navbar-nav{
+        flex-direction: row;
+    }
 
+    .nav-link{
+        justify-content: center;
+    }
 
-
-
-
-
-
-.totalCases{   
-    background-image: var(--gradient);
-    -webkit-background-clip: text;
-    color: transparent;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 6rem;
-    background-size: 200%;
-    animation: txt-animation 1.3s infinite alternate;
+    main{
+        margin: 0;
+    }
     
-    
-}
 
-.newCases{
-    background-image: var(--gradientb);
-    -webkit-background-clip: text;
-    color: transparent;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 5rem;
-    background-size: 200%;
-    animation: txt-animation 1.3s infinite alternate;
+    .navbar:hover .link-text{
+        display: none;
+        
+    }
 
 }
 
-.totalDeaths{   
-    background-image: var(--gradient);
-    -webkit-background-clip: text;
-    color: transparent;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 6rem;
-    background-size: 200%;
-    animation: txt-animation 1.3s infinite alternate;
-    
-    
-}
+@media only screen and (min-width: 600px){
+    .navbar{
+        top: 0;
+        width: 5rem;
+        height: 100vh;
 
-.totalRecovered{   
-    background-image: var(--gradientc);
-    -webkit-background-clip: text;
-    color: transparent;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 6rem;
-    background-size: 200%;
-    animation: txt-animation 1.3s infinite alternate;
-    
+    }
+
+    .navbar:hover{
+        width: 16rem;
+    }
+
+    .navbar:hover .link-text{
+        display: inline;
+        transition: opacity var(400ms);
+    }
     
 }
