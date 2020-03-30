@@ -1,6 +1,7 @@
 // https://github.com/novelcovid/api
 // https://covid19api.com/
 // https://www.worldometers.info/coronavirus/country/turkey/
+// <a href="#" class="btn btn-danger">Grafik</a>
 
 let ui = new UI();
 let home_chart = document.getElementById("myChart").getContext("2d");
@@ -21,8 +22,8 @@ const historical_recovered_data = new Data("https://api.covid19api.com/live/coun
 
 const data = new Data("https://corona.lmao.ninja/countries/792");
 
-document.addEventListener("DOMContentLoaded", load_home);
-home_button.addEventListener("click", load_home)
+document.addEventListener("DOMContentLoaded", load_page);
+home_button.addEventListener("click", load_page)
 
 total_cases_button.addEventListener("click", function () {
     remove_home();
@@ -103,7 +104,7 @@ total_deaths_button.addEventListener("click", function () {
         })
 });
 
-total_recovered_button.addEventListener("click", function(){
+total_recovered_button.addEventListener("click", function () {
     remove_home();
     historical_recovered_data.get()
         .then(res => {
@@ -138,40 +139,76 @@ function remove_home() {
     canvas.id = "myChart";
     home_chart_div.appendChild(canvas);
     home_chart = document.getElementById("myChart").getContext("2d");
+    document.getElementById("footer").innerHTML = "";
 }
 
-function load_home() {
+function load_page() {
     remove_home();
     data.get()
         .then(res => {
             home_table.innerHTML = `
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Toplam Vaka</th>
-                            <th scope="col">Bugünkü Vakalar</th>
-                            <th scope="col">Ölümler</th>
-                            <th scope="col">Bugünkü Ölümler</th>
-                            <th scope="col">İyileşenler</th>
-                            <th scope="col">Aktif Hasta</th>
-                            <th scope="col">Kritik Vaka</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="today-info">
-                            <th scope="row"></th>
-                            <td>${res.cases}</td>
-                            <td>${res.todayCases}</td>
-                            <td>${res.deaths}</td>
-                            <td>${res.todayDeaths}</td>
-                            <td>${res.recovered}</td>
-                            <td>${res.active}</td>
-                            <td>${res.critical}</td>
-                        </tr>
-                    </tbody>
-                </table>
-        `
+                <h2>COVID-19 Türkiye İstatistikleri</h1>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Vakalar</b></h5>
+                                <p class="card-text text-muted display-1">${res.cases}</p>
+                                <a href="#" class="btn btn-danger">Grafik</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Ölümler</b></h5>
+                                <p class="card-text text-muted display-1">${res.deaths}</p>
+                                <a href="#" class="btn btn-danger">Grafik</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>İyileşenler</b></h5>
+                                <p class="card-text text-muted display-1">${res.recovered}</p>
+                                <a href="#" class="btn btn-danger">Grafik</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 2rem;">
+                    <div class="col-sm-4">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Bugünkü Vakalar</b></h5>
+                                <p class="card-text text-muted display-1">${res.todayCases}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Bugünkü Ölümler</b></h5>
+                                <p class="card-text text-muted display-1">${res.todayDeaths}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Kritik</b></h5>
+                                <p class="card-text text-muted display-1">${res.critical}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById("footer").innerHTML = `
+            <p class="blockquote-footer text-center text-muted">Developed by Efe Furkan KARAKAYA and Yusuf Kerem ÇALIKOĞLU | MIT LICENCE | 2020</p>
+            `;
         })
         .catch(err => console.error(err));
 }
