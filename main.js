@@ -6,7 +6,6 @@ const optional = document.getElementById("optional");
 
 const home_button = document.getElementById("home-button");
 const total_cases_button = document.getElementById("total-cases-button");
-const daily_cases_button = document.getElementById("daily-cases-button");
 const total_deaths_button = document.getElementById("total-deaths-button");
 const total_recovered_button = document.getElementById("total-recovered-button");
 
@@ -62,9 +61,11 @@ function load_deaths(){
 
             for (date in historical_deaths) {
                 const shredded = date.split("/");
-                const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
-                dates_array.push(rebuilt);
-                deaths_array.push(historical_deaths[date]); // same dates with cases
+                if ((Number(shredded[0]) == 3 && Number(shredded[1]) >= 9) || shredded[0] >= 4) {
+                    const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
+                    dates_array.push(rebuilt);
+                    deaths_array.push(historical_deaths[date]);
+                }
             }
             ui.create_chart(home_chart, "line", dates_array, {
                 label: "Toplam ölüm sayısı",
@@ -97,6 +98,7 @@ function load_cases(){
     function daily() {
         historical_data.get()
             .then(res => {
+                remove_home();
                 historical_cases = res.timeline.cases;
                 historical_deaths = res.timeline.deaths;
                 let dates_array = [];
@@ -104,11 +106,13 @@ function load_cases(){
 
                 let temp = 0;
                 for (date in historical_cases) {
-                    daily_cases_array.push(Math.abs(historical_cases[date] - temp));
                     const shredded = date.split("/");
-                    const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
-                    dates_array.push(rebuilt);
-                    temp = historical_cases[date];
+                    if ((Number(shredded[0]) == 3 && Number(shredded[1]) >= 9) || shredded[0] >= 4) {
+                        daily_cases_array.push(Math.abs(historical_cases[date] - temp));
+                        const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
+                        dates_array.push(rebuilt);
+                        temp = historical_cases[date];
+                    }
                 }
                 ui.create_chart(home_chart, "bar", dates_array, {
                     label: "Günlük yeni vaka sayısı",
@@ -126,6 +130,7 @@ function load_cases(){
     function total() {
         historical_data.get()
             .then(res => {
+                remove_home();
                 historical_cases = res.timeline.cases;
                 historical_deaths = res.timeline.deaths;
                 let dates_array = [];
@@ -133,9 +138,11 @@ function load_cases(){
 
                 for (date in historical_cases) {
                     const shredded = date.split("/");
-                    const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
-                    dates_array.push(rebuilt);
-                    cases_array.push(historical_cases[date]);
+                    if ((Number(shredded[0]) == 3 && Number(shredded[1]) >= 9) || shredded[0] >= 4){
+                        const rebuilt = `${shredded[1]}/${shredded[0]}/20${shredded[2]}`
+                        dates_array.push(rebuilt);
+                        cases_array.push(historical_cases[date]);
+                    }
                 }
                 ui.create_chart(home_chart, "line", dates_array, {
                     label: "Toplam vaka sayısı",
