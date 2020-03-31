@@ -13,9 +13,20 @@
         h2{
             color: rgb(229, 57, 53);
         }
-        @media only screen and (min-width: 1601px){
-            #home-chart-div{
-                width: 1500px;
+        @media screen and (min-width: 1601px) {
+            #home-chart-div {
+                margin-top: 10rem !important;
+                margin-left: 20rem !important;
+                width: 1500px !important;
+            }
+            #home-table {
+                margin-left: 5% !important;
+            }
+        }
+        @media screen and (min-width: 1367px){
+            #home-chart-div {
+                margin-top: 10rem !important;
+                width: 1500px !important;
             }
         }
     </style>
@@ -74,7 +85,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" id="daily-cases-button">
+                <a href="https://github.com/efefurkankarakaya/covid19turkiye" class="nav-link">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
                         class="svg-inline--fa fa-github fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 496 512">
@@ -91,15 +102,13 @@
     <main>
         <div id="home-table">
         </div>
-        <div class="container" id="home-chart-div" style="margin-left: 10rem; margin-top: 5rem; width: 1000px;">
+        <div class="container" id="home-chart-div" style="margin-left: 10rem; margin-top: 5rem; width: 950px;" align="center">
             <canvas id="myChart"></canvas>
         </div>
-        <div id="optional" align="center"></div>
+        <div id="optional" style="margin-left: 40%;"></div>
     </main>
 
     <footer id="footer">
-        <p class="blockquote-footer text-center text-muted">Developed by Efe Furkan KARAKAYA and Yusuf Kerem ÇALIKOĞLU |
-            MIT LICENCE | 2020</p>
     </footer>
     <script src="data.js"></script>
     <script src="ui.js"></script>
