@@ -174,7 +174,7 @@ function load_page() {
     data.get()
         .then(res => {
             home_table.innerHTML = `
-                <h2 style="margin-left: 24rem;"><b>COVID-19 Türkiye İstatistikleri</b></h1>
+                <h2 style="margin-left: 30%;"><b>COVID-19 Türkiye İstatistikleri</b></h1>
                 <br>
                 <div class="row" style="margin-left: 13rem; margin-top: 5rem;">
                     <div class="col-sm-3">
