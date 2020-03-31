@@ -13,6 +13,11 @@
         h2{
             color: rgb(229, 57, 53);
         }
+        @media screen and (min-width: 1600px) {
+            #home-chart-div {
+                width: 100% !important;
+            }
+        }
     </style>
 </head>
 
@@ -86,7 +91,7 @@
     <main>
         <div id="home-table">
         </div>
-        <div class="container" id="home-chart-div" style="margin-left: 10rem; margin-top: 5rem; width: 75%;">
+        <div class="container" id="home-chart-div" style="margin-left: 10rem; margin-top: 5rem; width: 950px;" align="center">
             <canvas id="myChart"></canvas>
         </div>
         <div id="optional" style="margin-left: 40%;"></div>
