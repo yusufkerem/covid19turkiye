@@ -288,7 +288,69 @@ function load_page() {
                 </div>
             `;
             document.getElementById("footer").innerHTML = `
+            <style>
+                /* Popup container - can be anything you want */
+                .popup {
+                position: relative;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                }
+
+                /* The actual popup */
+                .popup .popuptext {
+                visibility: hidden;
+                width: 160px;
+                background-color: #555;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 8px 0;
+                position: absolute;
+                z-index: 1;
+                bottom: 125%;
+                left: 50%;
+                margin-left: -80px;
+                }
+
+                /* Popup arrow */
+                .popup .popuptext::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: #555 transparent transparent transparent;
+                }
+
+                /* Toggle this class - hide and show the popup */
+                .popup .show {
+                visibility: visible;
+                -webkit-animation: fadeIn 1s;
+                animation: fadeIn 1s;
+                }
+
+                /* Add animation (fade in the popup) */
+                @-webkit-keyframes fadeIn {
+                from {opacity: 0;} 
+                to {opacity: 1;}
+                }
+
+                @keyframes fadeIn {
+                from {opacity: 0;}
+                to {opacity:1 ;}
+                }
+            </style>
             <p class="blockquote-footer text-center text-muted">Developed by Efe Furkan KARAKAYA and Yusuf Kerem ÇALIKOĞLU | Data are being provided from <a href="https://covid19api.com/" style="color: #FFFF99;">covid19api</a> and <a href="https://docs.corona.lmao-xd.wtf/" style="color: #FFFF99;">lmao-xd.wtf</a> | © 2020</p>
+            
+            <div class="popup" align="center">
+                <span class="popuptext text-center" id="myPopup" style="color: gray;">Kullanıcı verileri, kullanıcı deneyimini artırmak ve sitede anlık kullanıcı sayısını, günlük erişim istatistiklerini ve kullanıcıların ne kadar süre durduklarını öğrenmek amacıyla kullanılmaktadır.</span>
+            </div>
+            <p class="popup text-center" onclick="pop_up()"><small><a style="color: gray;">Gizlilik Politikamız</a></small></p>
             `;
             const home_cases_button = document.getElementById("home-cases-button");
             const home_deaths_button = document.getElementById("home-deaths-button");
@@ -299,4 +361,9 @@ function load_page() {
             home_recovered_button.addEventListener("click", load_recovered);
         })
         .catch(err => console.error(err));
+}
+
+function pop_up() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
 }
