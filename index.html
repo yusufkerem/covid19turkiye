@@ -27,6 +27,11 @@
         #optional{
              margin-left: 40%;
         }
+        #return-home{
+            display: none;
+            margin-left: 2px;
+            margin-top: 1rem;
+        }
         @media screen and (min-width: 1601px) {
             #home-chart-div {
                 margin-top: 10rem !important;
@@ -57,6 +62,9 @@
             }
             #optional{
                 margin-left: 0;
+            }
+            #return-home{
+                display: none;
             }
         }
     </style>
@@ -136,6 +144,7 @@
             <canvas id="myChart"></canvas>
         </div>
         <div id="optional"></div>
+        <button id="return-home" class="btn btn-dark">Anasayfa</button>
     </main>
 
     <footer id="footer">

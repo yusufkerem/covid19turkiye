@@ -4,6 +4,10 @@ const home_table = document.getElementById("home-table");
 const home_chart_div = document.getElementById("home-chart-div");
 const optional = document.getElementById("optional");
 
+const width = window.screen.width;
+const return_home = document.getElementById("return-home");
+return_home.addEventListener("click", load_page);
+
 const home_button = document.getElementById("home-button");
 const total_cases_button = document.getElementById("total-cases-button");
 const total_deaths_button = document.getElementById("total-deaths-button");
@@ -47,6 +51,9 @@ function load_recovered(){
                 borderWidth: 5,
                 hoverBorderWidth: 20
             })
+            if (width <= 1280) {
+                return_home.style = "display: block";
+            }
         })
         .catch(err => console.error(err));
 }
@@ -75,6 +82,9 @@ function load_deaths(){
                 borderWidth: 5,
                 hoverBorderWidth: 20
             })
+            if (width <= 1280) {
+                return_home.style = "display: block";
+            }
         });
 }
 
@@ -124,6 +134,9 @@ function load_cases(){
                 })
                 optional.appendChild(daily_button);
                 optional.appendChild(total_button);
+                if (width <= 1280) {
+                    return_home.style = "display: block";
+                }
             })
     }
 
@@ -154,6 +167,9 @@ function load_cases(){
                 })
                 optional.appendChild(daily_button);
                 optional.appendChild(total_button);
+                if (width <= 1280) {
+                    return_home.style = "display: block";
+                }
             })
     }
 }
@@ -167,6 +183,7 @@ function remove_home() {
     home_chart_div.appendChild(canvas);
     home_chart = document.getElementById("myChart").getContext("2d");
     document.getElementById("footer").innerHTML = "";
+    return_home.style = "display: none";
 }
 
 function load_page() {
