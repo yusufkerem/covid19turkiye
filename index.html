@@ -2,7 +2,7 @@
 <html lang="tr">
 
 <head>
-    <meta charset="UTF-8">    
+    <meta charset="UTF-8">
     <title>COVID-19 | İstatistikler</title>
     <meta name="keywords" content="corona, coronavirus, ncov, ncov2019, ncov19, covid, covid19, covid2019, sars, mers, sars-cov, mers-cov, türkiye, turkiye, turkey, corona türkiye, corona turkiye, corona turkey">
     <meta name="description" content="Türkiye'deki anlık ve tarihe göre corona virüsü vaka, ölüm ve iyileşme istatistiklerinin bulunduğu platform.">
@@ -16,12 +16,21 @@
     </script>
     <script src="static/chart.min.js"></script>
     <link rel="stylesheet" href="static/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/style.css">
     <link rel="shortcut icon" type="image/png" href="icon/virus-solid-red.png">
     <style>
-        h1,
-        h2{
-            color: rgb(229, 57, 53);
+        #home-chart-div{
+            margin-left: 10rem;
+            margin-top: 5rem;
+            width: 950px;
+        }
+        #optional{
+             margin-left: 40%;
+        }
+        #return-home{
+            display: none;
+            margin-left: 2px;
+            margin-top: 1rem;
         }
         @media screen and (min-width: 1601px) {
             #home-chart-div {
@@ -39,12 +48,33 @@
                 width: 1500px !important;
             }
         }
+
+        @media screen and (max-width: 1280px){
+            #home-chart-div{
+                margin-top: 47%;
+                margin-left: 0;
+                width: 320px !important;
+            }
+            #footer{
+                margin-bottom: 1rem !important;
+            }
+            #navbar{
+                display: none;
+            }
+            #optional{
+                margin-left: 12%;
+            }
+            #return-home{
+                display: none;
+                margin-left: 34%;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar justify-content-center">
+    <nav id="navbar" class="navbar justify-content-center">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a href="#" class="nav-link" id="home-button">
@@ -95,7 +125,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="https://github.com/yusufkerem/covid19turkiye" class="nav-link">
+                <a href="https://github.com/efefurkankarakaya/covid19turkiye" class="nav-link">
                     <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
                         class="svg-inline--fa fa-github fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 496 512">
@@ -112,10 +142,11 @@
     <main>
         <div id="home-table">
         </div>
-        <div class="container" id="home-chart-div" style="margin-left: 10rem; margin-top: 5rem; width: 950px;" align="center">
+        <div class="container" id="home-chart-div" align="center">
             <canvas id="myChart"></canvas>
         </div>
-        <div id="optional" style="margin-left: 40%;"></div>
+        <div id="optional"></div>
+        <button id="return-home" class="btn btn-dark">Anasayfa</button>
     </main>
 
     <footer id="footer">

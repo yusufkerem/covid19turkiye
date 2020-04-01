@@ -4,6 +4,10 @@ const home_table = document.getElementById("home-table");
 const home_chart_div = document.getElementById("home-chart-div");
 const optional = document.getElementById("optional");
 
+const width = window.screen.width;
+const return_home = document.getElementById("return-home");
+return_home.addEventListener("click", load_page);
+
 const home_button = document.getElementById("home-button");
 const total_cases_button = document.getElementById("total-cases-button");
 const total_deaths_button = document.getElementById("total-deaths-button");
@@ -47,6 +51,9 @@ function load_recovered(){
                 borderWidth: 5,
                 hoverBorderWidth: 20
             })
+            if (width <= 1280) {
+                return_home.style = "display: block";
+            }
         })
         .catch(err => console.error(err));
 }
@@ -75,6 +82,9 @@ function load_deaths(){
                 borderWidth: 5,
                 hoverBorderWidth: 20
             })
+            if (width <= 1280) {
+                return_home.style = "display: block";
+            }
         });
 }
 
@@ -124,6 +134,9 @@ function load_cases(){
                 })
                 optional.appendChild(daily_button);
                 optional.appendChild(total_button);
+                if (width <= 1280) {
+                    return_home.style = "display: block";
+                }
             })
     }
 
@@ -154,6 +167,9 @@ function load_cases(){
                 })
                 optional.appendChild(daily_button);
                 optional.appendChild(total_button);
+                if (width <= 1280) {
+                    return_home.style = "display: block";
+                }
             })
     }
 }
@@ -167,6 +183,7 @@ function remove_home() {
     home_chart_div.appendChild(canvas);
     home_chart = document.getElementById("myChart").getContext("2d");
     document.getElementById("footer").innerHTML = "";
+    return_home.style = "display: none";
 }
 
 function load_page() {
@@ -174,67 +191,104 @@ function load_page() {
     data.get()
         .then(res => {
             home_table.innerHTML = `
-                <h2 style="margin-left: 30%;"><b>COVID-19 Türkiye İstatistikleri</b></h1>
+                <style>
+                #home-first-row{
+                    margin-left: 13rem; 
+                    margin-top: 5rem;
+                }
+
+                #home-second-row{
+                    margin-top: 2rem;
+                    margin-left: 13rem;
+                    margin-bottom: 0;
+                }
+
+                #home-header-text{
+                    margin-left: 30%;
+                    color: rgb(229,57,53);
+                }
+
+                #card-title{
+                    color: rgb(229,57,53);
+                }
+                @media screen and (max-width: 1280px){
+                    #home-header-text{
+                        margin-left: 0;
+                        text-align: center;
+                    }
+                    #home-first-row{
+                        margin-left: -1rem !important;
+                        margin-top: 2rem;
+                    }
+                    #card-area{
+                    }
+                    #home-second-row{
+                        margin-left: -1rem !important;
+                        margin-top: 0;
+                    }
+                }
+                </style>
+                <h2 id="home-header-text"><b>COVID-19 Türkiye İstatistikleri</b></h2>
                 <br>
-                <div class="row" style="margin-left: 13rem; margin-top: 5rem;">
-                    <div class="col-sm-3">
+                <div id="home-first-row" class="row" align="center">
+                    <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Vakalar</b></h5>
+                                <h5 id="card-title" class="card-title"><b>Bugünkü Vakalar</b></h5>
+                                <p class="card-text text-muted display-4">${res.todayCases}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="card-area" class="col-sm-3">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 id="card-title" class="card-title"><b>Bugünkü Ölümler</b></h5>
+                                <p class="card-text text-muted display-4">${res.todayDeaths}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="card-area" class="col-sm-3">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 id="card-title" class="card-title"><b>Kritik</b></h5>
+                                <p class="card-text text-muted display-4">${res.critical}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="home-second-row" class="row" align="center">
+                    <div id="card-area" class="col-sm-3">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 id="card-title" class="card-title"><b>Vakalar</b></h5>
                                 <p class="card-text text-muted display-4">${res.cases}</p>
                                 <a href="#" id="home-cases-button" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Ölümler</b></h5>
+                                <h5 id="card-title" class="card-title"><b>Ölümler</b></h5>
                                 <p class="card-text text-muted display-4">${res.deaths}</p>
                                 <a href="#" id="home-deaths-button" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>İyileşenler</b></h5>
+                                <h5 id="card-title" class="card-title"><b>İyileşenler</b></h5>
                                 <p class="card-text text-muted display-4">${res.recovered}</p>
                                 <a href="#" id="home-recovered-button" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="row" style="margin-top: 2rem; margin-left: 13rem; margin-bottom: 0;">
-                    <div class="col-sm-3">
-                        <div class="card bg-dark">
-                            <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Bugünkü Vakalar</b></h5>
-                                <p class="card-text text-muted display-4">${res.todayCases}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card bg-dark">
-                            <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Bugünkü Ölümler</b></h5>
-                                <p class="card-text text-muted display-4">${res.todayDeaths}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card bg-dark">
-                            <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Kritik</b></h5>
-                                <p class="card-text text-muted display-4">${res.critical}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             `;
             document.getElementById("footer").innerHTML = `
-            <p class="blockquote-footer text-center text-muted">Developed by Efe Furkan KARAKAYA and Yusuf Kerem ÇALIKOĞLU | Data are providing from <a href="https://covid19api.com/" style="color: #FFFF99;">covid19api</a> and <a href="https://docs.corona.lmao-xd.wtf/" style="color: #FFFF99;">lmao-xd.wtf</a> | © 2020</p>
+            <p class="blockquote-footer text-center text-muted">Developed by Efe Furkan KARAKAYA and Yusuf Kerem ÇALIKOĞLU | Data are being provided from <a href="https://covid19api.com/" style="color: #FFFF99;">covid19api</a> and <a href="https://docs.corona.lmao-xd.wtf/" style="color: #FFFF99;">lmao-xd.wtf</a> | © 2020</p>
             `;
             const home_cases_button = document.getElementById("home-cases-button");
             const home_deaths_button = document.getElementById("home-deaths-button");
