@@ -348,9 +348,9 @@ function load_page() {
             <p class="blockquote-footer text-center text-muted">Developed by Efe Furkan KARAKAYA and Yusuf Kerem ÇALIKOĞLU | Data are being provided from <a href="https://covid19api.com/" style="color: #FFFF99;">covid19api</a> and <a href="https://docs.corona.lmao-xd.wtf/" style="color: #FFFF99;">lmao-xd.wtf</a> | © 2020</p>
             
             <div class="popup" align="center">
-                <span class="popuptext text-center" id="myPopup" style="color: #E3E2E6;">Kullanıcı verileri, kullanıcı deneyimini artırmak ve sitede kaç kullanıcı olduğunu, günlük erişim istatistiklerini görme ve kullanıcıların ne kadar süre durduklarını öğrenmek amacıyla kullanılmaktadır.</span>
+                <span class="popuptext text-center" id="myPopup" style="color: gray;">Kullanıcı verileri, kullanıcı deneyimini artırmak ve sitede anlık kullanıcı sayısını, günlük erişim istatistiklerini ve kullanıcıların ne kadar süre durduklarını öğrenmek amacıyla kullanılmaktadır.</span>
             </div>
-            <p class="popup text-center text-muted" onclick="pop_up()"><small><a style="color: #E3E2E6;">Gizlilik Politikamız</a></small></p>
+            <p class="popup text-center" onclick="pop_up()"><small><a style="color: gray;">Gizlilik Politikamız</a></small></p>
             `;
             const home_cases_button = document.getElementById("home-cases-button");
             const home_deaths_button = document.getElementById("home-deaths-button");
