@@ -345,7 +345,8 @@ function load_page() {
                 to {opacity:1 ;}
                 }
             </style>
-            <p class="blockquote-footer text-center text-muted">Developed by Efe Furkan KARAKAYA and Yusuf Kerem ÇALIKOĞLU | Data are being provided from <a href="https://covid19api.com/" style="color: #FFFF99;">covid19api</a> and <a href="https://docs.corona.lmao-xd.wtf/" style="color: #FFFF99;">lmao-xd.wtf</a> | © 2020</p>
+            <p class="blockquote-footer text-center text-muted">Efe Furkan KARAKAYA ve Yusuf Kerem ÇALIKOĞLU tarafından geliştirilmiştir. | Veriler <a href="https://covid19api.com/" style="color: #FFFF99;">covid19api</a> ve <a href="https://docs.corona.lmao-xd.wtf/" style="color: #FFFF99;">lmao-xd.wtf</a> sitelerindeki API'lardan sağlanmaktadır. | © 2020<br>
+            Resmi verilere aynı zamanda T.C. Sağlık Bakanlığı'nın <a href="https://covid19.saglik.gov.tr/">sitesinden</a> de ulaşabilirsiniz.</p>
             
             <div class="popup" align="center">
                 <span class="popuptext text-center" id="myPopup" style="color: gray;">Kullanıcı verileri, kullanıcı deneyimini artırmak ve sitede anlık kullanıcı sayısını, günlük erişim istatistiklerini ve kullanıcıların ne kadar süre durduklarını öğrenmek amacıyla kullanılmaktadır.</span>
