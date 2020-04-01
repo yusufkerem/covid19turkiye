@@ -174,60 +174,97 @@ function load_page() {
     data.get()
         .then(res => {
             home_table.innerHTML = `
-                <h2 style="margin-left: 30%;"><b>COVID-19 Türkiye İstatistikleri</b></h1>
+                <style>
+                #home-first-row{
+                    margin-left: 13rem; 
+                    margin-top: 5rem;
+                }
+
+                #home-second-row{
+                    margin-top: 2rem;
+                    margin-left: 13rem;
+                    margin-bottom: 0;
+                }
+
+                #home-header-text{
+                    margin-left: 30%;
+                    color: rgb(229,57,53);
+                }
+
+                #card-title{
+                    color: rgb(229,57,53);
+                }
+                @media screen and (max-width: 1280px){
+                    #home-header-text{
+                        margin-left: 0;
+                        text-align: center;
+                    }
+                    #home-first-row{
+                        margin-left: -1rem !important;
+                        margin-top: 2rem;
+                    }
+                    #card-area{
+                    }
+                    #home-second-row{
+                        margin-left: -1rem !important;
+                        margin-top: 0;
+                    }
+                }
+                </style>
+                <h2 id="home-header-text"><b>COVID-19 Türkiye İstatistikleri</b></h2>
                 <br>
-                <div class="row" style="margin-left: 13rem; margin-top: 5rem;">
-                    <div class="col-sm-3">
+                <div id="home-first-row" class="row" align="center">
+                    <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Vakalar</b></h5>
-                                <p class="card-text text-muted display-4">${res.cases}</p>
-                                <a href="#" id="home-cases-button" class="btn btn-danger">Grafik</a>
+                                <h5 id="card-title" class="card-title"><b>Bugünkü Vakalar</b></h5>
+                                <p class="card-text text-muted display-4">${res.todayCases}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Ölümler</b></h5>
-                                <p class="card-text text-muted display-4">${res.deaths}</p>
-                                <a href="#" id="home-deaths-button" class="btn btn-danger">Grafik</a>
+                                <h5 id="card-title" class="card-title"><b>Bugünkü Ölümler</b></h5>
+                                <p class="card-text text-muted display-4">${res.todayDeaths}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>İyileşenler</b></h5>
-                                <p class="card-text text-muted display-4">${res.recovered}</p>
-                                <a href="#" id="home-recovered-button" class="btn btn-danger">Grafik</a>
+                                <h5 id="card-title" class="card-title"><b>Kritik</b></h5>
+                                <p class="card-text text-muted display-4">${res.critical}</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row" style="margin-top: 2rem; margin-left: 13rem; margin-bottom: 0;">
-                    <div class="col-sm-3">
+                <div id="home-second-row" class="row" align="center">
+                    <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Bugünkü Vakalar</b></h5>
-                                <p class="card-text text-muted display-4">${res.todayCases}</p>
+                                <h5 id="card-title" class="card-title"><b>Vakalar</b></h5>
+                                <p class="card-text text-muted display-4">${res.cases}</p>
+                                <a href="#" id="home-cases-button" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Bugünkü Ölümler</b></h5>
-                                <p class="card-text text-muted display-4">${res.todayDeaths}</p>
+                                <h5 id="card-title" class="card-title"><b>Ölümler</b></h5>
+                                <p class="card-text text-muted display-4">${res.deaths}</p>
+                                <a href="#" id="home-deaths-button" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 class="card-title" style="color: rgb(229,57,53);"><b>Kritik</b></h5>
-                                <p class="card-text text-muted display-4">${res.critical}</p>
+                                <h5 id="card-title" class="card-title"><b>İyileşenler</b></h5>
+                                <p class="card-text text-muted display-4">${res.recovered}</p>
+                                <a href="#" id="home-recovered-button" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>

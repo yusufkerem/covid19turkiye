@@ -19,9 +19,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/png" href="icon/virus-solid-red.png">
     <style>
-        h1,
-        h2{
-            color: rgb(229, 57, 53);
+        #home-chart-div{
+            margin-left: 10rem;
+            margin-top: 5rem;
+            width: 950px;
         }
         @media screen and (min-width: 1601px) {
             #home-chart-div {
@@ -37,6 +38,16 @@
             #home-chart-div {
                 margin-top: 10rem !important;
                 width: 1500px !important;
+            }
+        }
+
+        @media screen and (max-width: 1280px){
+            #home-chart-div{
+                margin-left: 0;
+                width: 450px !important;
+            }
+            #footer{
+                margin-bottom: 10rem !important;
             }
         }
     </style>
@@ -112,7 +123,7 @@
     <main>
         <div id="home-table">
         </div>
-        <div class="container" id="home-chart-div" style="margin-left: 10rem; margin-top: 5rem; width: 950px;" align="center">
+        <div class="container" id="home-chart-div" align="center">
             <canvas id="myChart"></canvas>
         </div>
         <div id="optional" style="margin-left: 40%;"></div>
