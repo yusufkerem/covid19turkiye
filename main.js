@@ -350,7 +350,7 @@ function load_page() {
             <div class="popup" align="center">
                 <span class="popuptext text-center text-muted" id="myPopup">Kullanıcı verileri, kullanıcı deneyimini artırmak ve sitede kaç kullanıcı olduğunu, günlük erişim istatistiklerini görme ve kullanıcıların ne kadar süre durduklarını öğrenmek amacıyla kullanılmaktadır.</span>
             </div>
-            <p class="popup text-center text-muted" onclick="pop_up()"><small><a style="color: lightblue;">Gizlilik Politikamız</a></small></p>
+            <p class="popup text-center text-muted" onclick="pop_up()"><small><a style="color: #E3E2E6;">Gizlilik Politikamız</a></small></p>
             `;
             const home_cases_button = document.getElementById("home-cases-button");
             const home_deaths_button = document.getElementById("home-deaths-button");
