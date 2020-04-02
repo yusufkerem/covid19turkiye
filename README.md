@@ -1,4 +1,4 @@
-# COVID-19 | İstatistikler
+# COVID-19 | Türkiye
 
 Türkiye'deki güncel ve tarihe göre yeni corona virüsü vaka, ölüm ve iyileşme istatistiklerinin bulunduğu platform.
 <hr>
@@ -11,6 +11,9 @@ The platform which has got the data which is about new corona virus cases, death
 * Chartjs
 * JavaScript
 
+# API
+<a href="https://github.com/NovelCOVID/API">NovelCOVID API</a>
+
 # Geliştiriciler / Developers
-* <a href="github.com/efefurkankarakaya">Efe Furkan KARAKAYA</a> (JavaScript Developer & Designer)
-* <a href="github.com/yusufkerem">Yusuf Kerem ÇALIKOĞLU</a> (Designer & Project Owner)
+* <a href="https://github.com/efefurkankarakaya">Efe Furkan KARAKAYA</a> (JavaScript Developer & Designer)
+* <a href="https://github.com/yusufkerem">Yusuf Kerem ÇALIKOĞLU</a> (Designer & Project Owner)
