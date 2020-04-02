@@ -19,4 +19,4 @@ The platform which has got the data which is about new corona virus cases, death
 * <a href="https://github.com/yusufkerem">Yusuf Kerem ÇALIKOĞLU</a> (Designer & Project Owner)
 
 # LICENCE
-<a href="LICENCE">MIT</a>
+<a href="https://github.com/efefurkankarakaya/covid19/LICENSE">MIT</a>
