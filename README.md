@@ -1,8 +1,8 @@
 # COVID-19 | Türkiye
 
-Türkiye'deki güncel ve tarihe göre yeni corona virüsü vaka, ölüm ve iyileşme istatistiklerinin bulunduğu platform.
+Türkiye'deki yeni corona virüsü vaka, ölüm ve iyileşme istatistiksel verilerinin paylaşıldığı platform.
 <hr>
-The platform which has got the data which is about new corona virus cases, deaths and recovered statistics with updated and according to date.
+The platform which is being shared the data which is about new corona virus cases, deaths and recovered statistics in Turkey.
 
 # Kullanılan Teknolojiler / Used Technologies
 * HTML 5
