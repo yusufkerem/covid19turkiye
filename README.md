@@ -17,3 +17,6 @@ The platform which has got the data which is about new corona virus cases, death
 # Geliştiriciler / Developers
 * <a href="https://github.com/efefurkankarakaya">Efe Furkan KARAKAYA</a> (JavaScript Developer & Designer)
 * <a href="https://github.com/yusufkerem">Yusuf Kerem ÇALIKOĞLU</a> (Designer & Project Owner)
+
+# LICENCE
+<a href="LICENCE">MIT</a>
