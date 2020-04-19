@@ -56,80 +56,114 @@ function data_parser(res, type, daily=false){
 
 function load_recovered(){
     remove_home();
-    historical_data.get()
-        .then(res => {
-            const parsed_data = data_parser(res, "recovered");
-            ui.create_chart(home_chart, "line", parsed_data[0], {
-                label: "Toplam iyileşen sayısı",
-                data: parsed_data[1],
-                borderColor: "rgb(19,240,161)",
-                hoverBorderColor: "rgb(137,247,208)",
-                borderWidth: 5,
-                hoverBorderWidth: 20
-            })
-            if (width <= 1280) {
-                return_home.style = "display: block";
-            }
-        })
-        .catch(err => console.error(err));
-}
-
-function load_deaths(){
-    remove_home();
-    historical_data.get()
-        .then(res => {
-            const parsed_data = data_parser(res, "deaths");
-            ui.create_chart(home_chart, "line", parsed_data[0], {
-                label: "Toplam ölüm sayısı",
-                data: parsed_data[1],
-                borderColor: "darkred",
-                hoverBorderColor: "red",
-                borderWidth: 5,
-                hoverBorderWidth: 20
-            })
-            if (width <= 1280) {
-                return_home.style = "display: block";
-            }
-        });
-}
-
-function load_cases(){
-    remove_home();
     total();
-    const daily_button = document.createElement("button");
-    daily_button.id = "daily-button";
-    daily_button.textContent = "Günlük Vaka";
-    daily_button.className = "btn btn-dark";
+    const options = ui.create_options("İyileşen");
 
-    const total_button = document.createElement("button");
-    total_button.id = "total-button";
-    total_button.textContent = "Toplam Vaka";
-    total_button.className = "btn btn-dark";
-    total_button.style = "margin-left: 2px;";
+    options[0].addEventListener("click", daily);
+    options[1].addEventListener("click", total);
 
-    daily_button.addEventListener("click", daily);
-    total_button.addEventListener("click", total);
+    function total(){
+        historical_data.get()
+            .then(res => {
+                remove_home();
+                const parsed_data = data_parser(res, "recovered");
+                ui.create_chart(home_chart, "line", parsed_data[0], {
+                    label: "Toplam iyileşen sayısı",
+                    data: parsed_data[1],
+                    borderColor: "rgb(19,240,161)",
+                    hoverBorderColor: "rgb(137,247,208)",
+                    borderWidth: 5,
+                    hoverBorderWidth: 20
+                })
+                optional.appendChild(options[0]);
+                optional.appendChild(options[1]);
+                if (width <= 1280) {
+                    return_home.style = "display: block";
+                }
+            })
+            .catch(err => console.error(err));
+    }
 
     function daily() {
         historical_data.get()
             .then(res => {
                 remove_home();
-                const parsed_data = data_parser(res, "cases",  true);
+                const parsed_data = data_parser(res, "recovered", true);
                 ui.create_chart(home_chart, "bar", parsed_data[0], {
-                    label: "Günlük yeni vaka sayısı",
+                    label: "Günlük iyileşen sayısı",
                     data: parsed_data[1],
                     borderColor: "rgb(175,182,180)",
                     hoverBorderColor: "rgb(235,237,236)",
                     borderWidth: 5,
                     hoverBorderWidth: 25
                 })
-                optional.appendChild(daily_button);
-                optional.appendChild(total_button);
+                optional.appendChild(options[0]);
+                optional.appendChild(options[1]);
                 if (width <= 1280) {
                     return_home.style = "display: block";
                 }
             })
     }
+}
+
+function load_deaths(){
+    remove_home();
+    total();
+    const options = ui.create_options("Ölüm");
+
+    options[0].addEventListener("click", daily);
+    options[1].addEventListener("click", total);
+
+    function total(){
+        historical_data.get()
+            .then(res => {
+                remove_home();
+                const parsed_data = data_parser(res, "deaths");
+                ui.create_chart(home_chart, "line", parsed_data[0], {
+                    label: "Toplam ölüm sayısı",
+                    data: parsed_data[1],
+                    borderColor: "darkred",
+                    hoverBorderColor: "red",
+                    borderWidth: 5,
+                    hoverBorderWidth: 20
+                })
+                optional.appendChild(options[0]);
+                optional.appendChild(options[1]);
+                if (width <= 1280) {
+                    return_home.style = "display: block";
+                }
+            });
+    }
+
+    function daily() {
+        historical_data.get()
+            .then(res => {
+                remove_home();
+                const parsed_data = data_parser(res, "deaths", true);
+                ui.create_chart(home_chart, "bar", parsed_data[0], {
+                    label: "Günlük ölüm sayısı",
+                    data: parsed_data[1],
+                    borderColor: "rgb(175,182,180)",
+                    hoverBorderColor: "rgb(235,237,236)",
+                    borderWidth: 5,
+                    hoverBorderWidth: 25
+                })
+                optional.appendChild(options[0]);
+                optional.appendChild(options[1]);
+                if (width <= 1280) {
+                    return_home.style = "display: block";
+                }
+            })
+    }
+}
+
+function load_cases(){
+    remove_home();
+    total();
+    const options = ui.create_options("Vaka");
+
+    options[0].addEventListener("click", daily);
+    options[1].addEventListener("click", total);
 
     function total() {
         historical_data.get()
@@ -144,8 +178,29 @@ function load_cases(){
                     borderWidth: 5,
                     hoverBorderWidth: 20
                 })
-                optional.appendChild(daily_button);
-                optional.appendChild(total_button);
+                optional.appendChild(options[0]);
+                optional.appendChild(options[1]);
+                if (width <= 1280) {
+                    return_home.style = "display: block";
+                }
+            })
+    }
+
+    function daily() {
+        historical_data.get()
+            .then(res => {
+                remove_home();
+                const parsed_data = data_parser(res, "cases",  true);
+                ui.create_chart(home_chart, "bar", parsed_data[0], {
+                    label: "Günlük yeni vaka sayısı",
+                    data: parsed_data[1],
+                    borderColor: "rgb(175,182,180)",
+                    hoverBorderColor: "rgb(235,237,236)",
+                    borderWidth: 5,
+                    hoverBorderWidth: 25
+                })
+                optional.appendChild(options[0]);
+                optional.appendChild(options[1]);
                 if (width <= 1280) {
                     return_home.style = "display: block";
                 }

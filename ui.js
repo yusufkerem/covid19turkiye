@@ -10,6 +10,21 @@ class UI{
         });
     }
 
+    create_options(struct_name){
+        const daily_button = document.createElement("button");
+        daily_button.id = "daily-button";
+        daily_button.textContent = `Günlük ${struct_name}`;
+        daily_button.className = "btn btn-dark";
+
+        const total_button = document.createElement("button");
+        total_button.id = "total-button";
+        total_button.textContent = `Toplam ${struct_name}`;
+        total_button.className = "btn btn-dark";
+        total_button.style = "margin-left: 2px;";
+
+        return [daily_button, total_button];
+    }
+
     create_home(res){
         home_table.innerHTML = `
                 <style>
