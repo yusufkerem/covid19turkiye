@@ -30,7 +30,7 @@ class UI{
                 <style>
                     #home-first-row{
                         margin-left: 13rem; 
-                        margin-top: 5rem;
+                        margin-top: 2rem;
                     }
 
                     #home-second-row{
@@ -39,22 +39,21 @@ class UI{
                         margin-bottom: 0;
                     }
 
-                    #home-header-text{
-                        margin-left: 30%;
-                        color: rgb(229,57,53);
+                    #home-top-row{
+                        margin-left: 13rem;
                     }
 
                     #card-title{
                         color: rgb(229,57,53);
                     }
                     @media screen and (max-width: 1280px){
-                        #home-header-text{
-                            margin-left: 0;
+                        #home-top-row{
+                            margin-left: -1rem !important;
                             text-align: center;
                         }
                         #home-first-row{
                             margin-left: -1rem !important;
-                            margin-top: 2rem;
+                            margin-top: 0;
                         }
                         #card-area{
                         }
@@ -64,8 +63,16 @@ class UI{
                         }
                     }
                 </style>
-                <h2 id="home-header-text"><b>COVID-19 Türkiye İstatistikleri</b></h2>
-                <br>
+                <div id="home-top-row" class="row" align="center">
+                    <div id="card-area" class="col-sm-9">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <h5 id="card-title" class="card-title"><b>Toplam Test Sayısı</b></h5>
+                                <p class="card-text text-muted display-4">${res.tests}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div id="home-first-row" class="row" align="center">
                     <div id="card-area" class="col-sm-3">
                         <div class="card bg-dark">
