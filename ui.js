@@ -40,6 +40,7 @@ class UI{
                     }
 
                     #home-top-row{
+                        margin-top: 1rem;
                         margin-left: 13rem;
                     }
 
