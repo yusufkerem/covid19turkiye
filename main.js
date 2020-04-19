@@ -15,7 +15,7 @@ const total_recovered_button = document.getElementById("total-recovered-button")
 
 const historical_data = new Data("https://corona.lmao.ninja/v2/historical/turkey");
 
-const data = new Data("https://corona.lmao.ninja/countries/792");
+const data = new Data("https://corona.lmao.ninja/v2/countries/turkey");
 
 document.addEventListener("DOMContentLoaded", load_page);
 home_button.addEventListener("click", load_page)
