@@ -15,7 +15,7 @@ The platform which is being shared the data which is about new corona virus case
 <a href="https://github.com/NovelCOVID/API">NovelCOVID API</a>
 
 # Geliştiriciler / Developers
-* <a href="https://github.com/efefurkankarakaya">Efe KARAKAYA</a> (JavaScript Developer & Designer)
+* <a href="https://github.com/efekarakaya">Efe KARAKAYA</a> (JavaScript Developer & Designer)
 * <a href="https://github.com/yusufkerem">Yusuf Kerem ÇALIKOĞLU</a> (Designer & Project Owner)
 
 # LICENCE
