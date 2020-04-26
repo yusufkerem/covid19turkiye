@@ -192,7 +192,7 @@ class UI{
                 to {opacity:1 ;}
                 }
             </style>
-            <p class="blockquote-footer text-center text-muted">Efe KARAKAYA ve Yusuf Kerem ÇALIKOĞLU tarafından geliştirilmiştir. | Veriler <a href="https://github.com/novelcovid/api" style="color: #FFFF99;">novelcovidapi</a>'dan sağlanmaktadır. | © 2020<br>
+            <p class="blockquote-footer text-center text-muted">Efe Furkan KARAKAYA ve Yusuf Kerem ÇALIKOĞLU tarafından geliştirilmiştir. | Veriler <a href="https://github.com/novelcovid/api" style="color: #FFFF99;">novelcovidapi</a>'dan sağlanmaktadır. | © 2020<br>
             Resmi verilere aynı zamanda T.C. Sağlık Bakanlığı'nın <a href="https://covid19.saglik.gov.tr/">sitesinden</a> de ulaşabilirsiniz.</p>
             
             <div class="popup" align="center">
