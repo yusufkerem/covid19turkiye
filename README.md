@@ -20,3 +20,14 @@ The platform which is being shared the data which is about new corona virus case
 
 # LICENCE
 <a href="LICENSE">MIT</a>
+
+# Screenshots
+<hr>
+## Home
+<img src="doc/images/home.png">
+
+## Daily Cases
+<img src="doc/images/daily-case.png">
+
+## Total Recovered
+<img src="doc/images/total-recovered.png">
