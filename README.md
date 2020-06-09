@@ -22,12 +22,16 @@ The platform which is being shared the data which is about new corona virus case
 <a href="LICENSE">MIT</a>
 
 # Screenshots
-<hr>
+
 ## Home
 <img src="doc/images/home.png">
 
+<hr>
+
 ## Daily Cases
 <img src="doc/images/daily-case.png">
+
+<hr>
 
 ## Total Recovered
 <img src="doc/images/total-recovered.png">
