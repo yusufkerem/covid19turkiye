@@ -67,14 +67,18 @@ class UI{
                             margin-left: -1rem !important;
                             margin-top: 0;
                         }
+                        #home-third-row{
+                            margin-left: -1rem !important;
+                            margin-top: 0;
+                        }
                     }
                 </style>
                 <div id="home-top-row" class="row" align="center">
                     <div id="card-area" class="col-sm-9">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 id="card-title" class="card-title"><b>Toplam Test Sayısı</b></h5>
-                                <p class="card-text text-muted h1">${res.tests}</p>
+                                <h5 id="card-title" class="card-title"><b>Aktif Vakalar</b></h5>
+                                <p class="card-text text-muted h1">${Number(res.cases) - (Number(res.deaths + res.recovered))}</p>
                             </div>
                         </div>
                     </div>
@@ -136,12 +140,12 @@ class UI{
                     </div>
                 </div>
 
-                <div id="home-second-row" class="row" align="center">
+                <div id="home-third-row" class="row" align="center">
                     <div id="card-area" class="col-sm-9">
                         <div class="card bg-dark">
                             <div class="card-body">
-                                <h5 id="card-title" class="card-title"><b>Aktif Vakalar</b></h5>
-                                <p class="card-text text-muted h1">${Number(res.cases) - (Number(res.deaths + res.recovered))}</p>
+                                <h5 id="card-title" class="card-title"><b>Toplam Test Sayısı</b></h5>
+                                <p class="card-text text-muted h1">${res.tests}</p>
                             </div>
                         </div>
                     </div>
