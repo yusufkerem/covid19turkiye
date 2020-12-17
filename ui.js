@@ -116,7 +116,7 @@ class UI{
                             <div class="card-body">
                                 <h5 id="card-title" class="card-title"><b>Vakalar</b></h5>
                                 <p class="card-text text-muted h1">${res.cases}</p>
-                                <a href="#" id="home-cases-button" class="btn btn-danger">Grafik</a>
+                                <a href="#vaka-sayisi" id="home-cases-button" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@ class UI{
                             <div class="card-body">
                                 <h5 id="card-title" class="card-title"><b>Ölümler</b></h5>
                                 <p class="card-text text-muted h1">${res.deaths}</p>
-                                <a href="#" id="home-deaths-button" class="btn btn-danger">Grafik</a>
+                                <a href="#olum-sayisi" id="home-deaths-button" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@ class UI{
                             <div class="card-body">
                                 <h5 id="card-title" class="card-title"><b>İyileşenler</b></h5>
                                 <p class="card-text text-muted h1">${res.recovered}</p>
-                                <a href="#" id="home-recovered-button" class="btn btn-danger">Grafik</a>
+                                <a href="#iyilesen-sayisi" id="home-recovered-button" class="btn btn-danger">Grafik</a>
                             </div>
                         </div>
                     </div>
